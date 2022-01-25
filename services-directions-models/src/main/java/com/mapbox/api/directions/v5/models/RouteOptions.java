@@ -61,8 +61,8 @@ public abstract class RouteOptions extends DirectionsJsonObject {
    * @return string value representing the user
    * @since 3.0.0
    */
-  @NonNull
-  public abstract String user();
+//  @NonNull
+//  public abstract String user();
 
   /**
    * The routing profile to use. Possible values are
@@ -340,9 +340,9 @@ public abstract class RouteOptions extends DirectionsJsonObject {
    * @return a string representing the Mapbox access token
    * @since 3.0.0
    */
-  @SerializedName("access_token")
-  @NonNull
-  public abstract String accessToken();
+//  @SerializedName("access_token")
+//  @NonNull
+//  public abstract String accessToken();
 
   /**
    * A universally unique identifier (UUID) for identifying and executing a similar specific route
@@ -352,9 +352,9 @@ public abstract class RouteOptions extends DirectionsJsonObject {
    * @return a string containing the request UUID
    * @since 3.0.0
    */
-  @SerializedName("uuid")
-  @NonNull
-  public abstract String requestUuid();
+//  @SerializedName("uuid")
+//  @NonNull
+//  public abstract String requestUuid();
 
   /**
    * Indicates from which side of the road to approach a waypoint.
@@ -587,7 +587,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
      * @return this builder for chaining options together
      * @since 3.0.0
      */
-    public abstract Builder user(@NonNull String user);
+//    public abstract Builder user(@NonNull String user);
 
     /**
      * The routing profile to use. Possible values are
@@ -863,7 +863,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
      * @return this builder for chaining options together
      * @since 3.0.0
      */
-    public abstract Builder accessToken(@NonNull String accessToken);
+//    public abstract Builder accessToken(@NonNull String accessToken);
 
     /**
      * A universally unique identifier (UUID) for identifying and executing a similar specific route
@@ -873,7 +873,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
      * @return this builder for chaining options together
      * @since 3.0.0
      */
-    public abstract Builder requestUuid(@NonNull String requestUuid);
+//    public abstract Builder requestUuid(@NonNull String requestUuid);
 
     /**
      * Exclude certain road types from routing. The default is to not exclude anything from the

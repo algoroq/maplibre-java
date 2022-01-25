@@ -12,7 +12,7 @@ public class BasicMapMatching {
   public static void main(String[] args) {
 
     MapboxMapMatching mapMatching = MapboxMapMatching.builder()
-      .accessToken(BuildConfig.MAPBOX_ACCESS_TOKEN)
+//      .accessToken(BuildConfig.MAPBOX_ACCESS_TOKEN)
       .coordinate(Point.fromLngLat(-117.1728265285492,32.71204416018209))
       .coordinate(Point.fromLngLat(-117.17288821935652,32.712258556224))
       .coordinate(Point.fromLngLat(-117.17293113470076,32.712443613445814))

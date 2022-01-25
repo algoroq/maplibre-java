@@ -23,11 +23,11 @@ public interface MapMatchingService {
    * {@link MapboxMapMatching.Builder}.
    *
    * @param userAgent          user agent
-   * @param user               user
+//   * @param user               user
    * @param profile            directions profile ID; either mapbox/driving, mapbox/walking,
    *                           or mapbox/cycling
    * @param coordinates        inaccurate traces from a GPS unit or a phone
-   * @param accessToken        Mapbox access token
+//   * @param accessToken        Mapbox access token
    * @param geometries         format of the returned geometry. Allowed values are: geojson
    *                           (as LineString), polyline with precision 5, polyline6. The default
    *                           value is polyline
@@ -69,10 +69,10 @@ public interface MapMatchingService {
   @GET("matching/v5/{user}/{profile}/{coordinates}")
   Call<MapMatchingResponse> getCall(
     @Header("User-Agent") String userAgent,
-    @Path("user") String user,
+//    @Path("user") String user,
     @Path("profile") String profile,
     @Path("coordinates") String coordinates,
-    @Query("access_token") String accessToken,
+//    @Query("access_token") String accessToken,
     @Query("geometries") String geometries,
     @Query("radiuses") String radiuses,
     @Query("steps") Boolean steps,
@@ -95,11 +95,11 @@ public interface MapMatchingService {
    * {@link MapboxMapMatching.Builder}.
    *
    * @param userAgent          user agent
-   * @param user               user
+//   * @param user               user
    * @param profile            directions profile ID; either mapbox/driving, mapbox/walking,
    *                           or mapbox/cycling
    * @param coordinates        inaccurate traces from a GPS unit or a phone
-   * @param accessToken        Mapbox access token
+//   * @param accessToken        Mapbox access token
    * @param geometries         format of the returned geometry. Allowed values are: geojson
    *                           (as LineString), polyline with precision 5, polyline6. The default
    *                           value is polyline
@@ -142,10 +142,10 @@ public interface MapMatchingService {
   @POST("matching/v5/{user}/{profile}")
   Call<MapMatchingResponse> postCall(
           @Header("User-Agent") String userAgent,
-          @Path("user") String user,
+//          @Path("user") String user,
           @Path("profile") String profile,
           @Field("coordinates") String coordinates,
-          @Query("access_token") String accessToken,
+//          @Query("access_token") String accessToken,
           @Field("geometries") String geometries,
           @Field("radiuses") String radiuses,
           @Field("steps") Boolean steps,

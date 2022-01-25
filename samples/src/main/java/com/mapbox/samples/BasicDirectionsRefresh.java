@@ -10,6 +10,8 @@ import com.mapbox.sample.BuildConfig;
 import java.io.IOException;
 
 import java.util.Arrays;
+import java.util.UUID;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,14 +33,14 @@ public class BasicDirectionsRefresh {
   private static String simpleMapboxDirectionsRequest(MapboxDirections directions) throws IOException {
     Response<DirectionsResponse> response = directions.executeCall();
     System.out.println("Directions response: " + response);
-    String requestId = response.body().routes().get(0).routeOptions().requestUuid();
+//    String requestId = response.body().routes().get(0).routeOptions().requestUuid();
 
-    return requestId;
+    return UUID.randomUUID().toString();
   }
 
   private static MapboxDirections mapboxDirections(Boolean addWaypoint) {
     MapboxDirections.Builder directions = MapboxDirections.builder()
-      .accessToken(BuildConfig.MAPBOX_ACCESS_TOKEN)
+//      .accessToken(BuildConfig.MAPBOX_ACCESS_TOKEN)
       .enableRefresh(true)
       .origin(Point.fromLngLat(-95.6332, 29.7890))
       .destination(Point.fromLngLat(-95.3591, 29.7576))
