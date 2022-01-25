@@ -141,7 +141,7 @@ public abstract class StepIntersection extends DirectionsJsonObject {
   /**
    * A boolean indicating whether the road exiting the intersection is considered to be in an urban
    * area. This value is determined by the density of the surrounding road network.
-   * Only available on the {@link DirectionsCriteria#PROFILE_DRIVING} profile.
+   * Only available on the { DirectionsCriteria#PROFILE_DRIVING} profile.
    *
    * @return a value indicating whether the road exiting the intersection is in an urban area
    */
@@ -177,7 +177,7 @@ public abstract class StepIntersection extends DirectionsJsonObject {
    * <a href="https://wiki.openstreetmap.org/wiki/Tag:barrier%3Dtoll_booth">
    *   payment booth or overhead electronic gantry</a>
    * where toll charge is collected.
-   * Only available on the {@link DirectionsCriteria#PROFILE_DRIVING} profile.
+   * Only available on the { DirectionsCriteria#PROFILE_DRIVING} profile.
    *
    * @return an object containing information about a toll collection point along the route.
    */
@@ -188,7 +188,7 @@ public abstract class StepIntersection extends DirectionsJsonObject {
   /**
    * An object containing detailed information about the road exiting the intersection along the
    * route. Properties in this object correspond to properties in the {@link #classes()}
-   * specification. Only available on the {@link DirectionsCriteria#PROFILE_DRIVING} profile.
+   * specification. Only available on the { DirectionsCriteria#PROFILE_DRIVING} profile.
    *
    * @return an object containing detailed road information.
    */
@@ -338,7 +338,7 @@ public abstract class StepIntersection extends DirectionsJsonObject {
     /**
      * A boolean indicating whether the road exiting the intersection is considered to be in an
      * urban area. This value is determined by the density of the surrounding road network.
-     * Only available on the {@link DirectionsCriteria#PROFILE_DRIVING} profile.
+     * Only available on the {DirectionsCriteria#PROFILE_DRIVING} profile.
      *
      * @param isUrban indicating whether the road exiting the intersection is in an urban area
      * @return this builder for chaining options together
@@ -384,7 +384,7 @@ public abstract class StepIntersection extends DirectionsJsonObject {
     /**
      * An object containing detailed information about the road exiting the intersection along the
      * route. Properties in this object correspond to properties in the {@link #classes()}
-     * specification. Only available on the {@link DirectionsCriteria#PROFILE_DRIVING} profile.
+     * specification. Only available on the  profile.
      *
      * @param street an object containing detailed road information.
      * @return this builder for chaining options together

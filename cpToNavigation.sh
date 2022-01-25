@@ -1,6 +1,6 @@
 #!/bin/bash
 WORKING_DIR=$(pwd)
-NAVIGATION_PATH="../flitsmeister-navigation-android-master/libandroid-navigation/libs"
+NAVIGATION_PATH="../phonemaps-revolutions/libandroid-navigation/libs"
 rm $NAVIGATION_PATH/*.jar
 
 

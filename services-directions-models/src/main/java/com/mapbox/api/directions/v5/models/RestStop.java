@@ -11,7 +11,7 @@ import com.mapbox.api.directions.v5.DirectionsCriteria;
 
 /**
  * An object containing information about passing rest stops along the route.
- * Only available on the {@link DirectionsCriteria#PROFILE_DRIVING} profile.
+ * Only available on the { DirectionsCriteria#PROFILE_DRIVING} profile.
  */
 @AutoValue
 public abstract class RestStop extends DirectionsJsonObject {

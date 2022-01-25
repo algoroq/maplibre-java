@@ -248,8 +248,8 @@ public abstract class MapboxMapMatching extends
      */
     public static Builder builder() {
         return new AutoValue_MapboxMapMatching.Builder()
-//                .baseUrl(Constants.BASE_API_URL)
-                .profile(DirectionsCriteria.PROFILE_DRIVING)
+                .baseUrl(Constants.BASE_API_URL)
+                .profile(DirectionsCriteria.PROFILE_WALKING)
                 .geometries(DirectionsCriteria.GEOMETRY_POLYLINE6);
 //      .user(DirectionsCriteria.PROFILE_DEFAULT_USER);
     }
@@ -269,7 +269,6 @@ public abstract class MapboxMapMatching extends
         private Integer[] waypointIndices;
         private String[] waypointNames;
         private String[] approaches;
-        private String baseUrl;
 
         /**
          * Use POST method to request data.
@@ -657,24 +656,6 @@ public abstract class MapboxMapMatching extends
          */
         public abstract Builder baseUrl(String baseUrl);
 
-        public Builder generateBaseUrl(@NonNull @ProfileCriteria String profile) {
-            switch (profile) {
-                case DirectionsCriteria.PROFILE_CYCLING: {
-                    baseUrl = String.format("%s:5007/", Constants.BASE_API_URL);
-                }
-                case DirectionsCriteria.PROFILE_DRIVING: {
-                    baseUrl = Constants.BASE_API_URL;
-                }
-                case DirectionsCriteria.PROFILE_WALKING: {
-                    baseUrl = String.format("%s:5006/", Constants.BASE_API_URL);
-                }
-                default: {
-                    baseUrl = Constants.BASE_API_URL;
-                }
-            }
-            return this;
-        }
-
 
         @SuppressWarnings("WeakerAccess")
         protected abstract MapboxMapMatching autoBuild();
@@ -746,9 +727,6 @@ public abstract class MapboxMapMatching extends
             annotations(TextUtils.join(",", annotations));
             radiuses(TextUtils.join(";", radiuses));
             waypointIndices(TextUtils.join(";", waypointIndices));
-            if (baseUrl != null && !baseUrl.trim().equals("")){
-                baseUrl(baseUrl);
-            }
 
             // Generate build so that we can check that values are valid.
             MapboxMapMatching mapMatching = autoBuild();

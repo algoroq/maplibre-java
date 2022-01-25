@@ -11,37 +11,13 @@ import java.lang.annotation.RetentionPolicy;
  * @since 1.0.0
  */
 public final class DirectionsCriteria {
-
-  /**
-   * Mapbox default username.
-   *
-   * @since 1.0.0
-   */
-  public static final String PROFILE_DEFAULT_USER = "mapbox";
-
-  /**
-   * For car and motorcycle routing. This profile factors in current and historic traffic
-   * conditions to avoid slowdowns.
-   *
-   * @since 2.0.0
-   */
-  public static final String PROFILE_DRIVING_TRAFFIC = "driving-traffic";
-
-  /**
-   * For car and motorcycle routing. This profile shows the fastest routes by preferring
-   * high-speed roads like highways.
-   *
-   * @since 1.0.0
-   */
-  public static final String PROFILE_DRIVING = "driving";
-
   /**
    * For pedestrian and hiking routing. This profile shows the shortest path by using sidewalks
    * and trails.
    *
    * @since 1.0.0
    */
-  public static final String PROFILE_WALKING = "walking";
+  public static final String PROFILE_WALKING = "walk";
 
   /**
    * For bicycle routing. This profile shows routes that are short and safe for cyclist, avoiding
@@ -49,7 +25,7 @@ public final class DirectionsCriteria {
    *
    * @since 1.0.0
    */
-  public static final String PROFILE_CYCLING = "cycling";
+  public static final String PROFILE_CYCLING = "cycle";
 
   /**
    * Format to return route geometry will be an encoded polyline.
@@ -242,8 +218,6 @@ public final class DirectionsCriteria {
    */
   @Retention(RetentionPolicy.SOURCE)
   @StringDef( {
-    PROFILE_DRIVING_TRAFFIC,
-    PROFILE_DRIVING,
     PROFILE_WALKING,
     PROFILE_CYCLING
   })

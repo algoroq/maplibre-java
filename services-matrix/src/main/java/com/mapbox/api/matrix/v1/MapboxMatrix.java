@@ -112,8 +112,8 @@ public abstract class MapboxMatrix extends MapboxService<MatrixResponse, MatrixS
   public static Builder builder() {
     return new AutoValue_MapboxMatrix.Builder()
       .baseUrl(Constants.BASE_API_URL)
-      .profile(DirectionsCriteria.PROFILE_DRIVING)
-      .user(DirectionsCriteria.PROFILE_DEFAULT_USER);
+      .profile(DirectionsCriteria.PROFILE_CYCLING)
+      .user("mapbox");
   }
 
   /**
@@ -141,8 +141,7 @@ public abstract class MapboxMatrix extends MapboxService<MatrixResponse, MatrixS
     private Integer coordinateListSizeLimit;
 
     /**
-     * The username for the account that the directions engine runs on. In most cases, this should
-     * always remain the default value of {@link DirectionsCriteria#PROFILE_DEFAULT_USER}.
+     * The username for the account that the directions engine runs on..
      *
      * @param user a non-null string which will replace the default user used in the directions
      *             request

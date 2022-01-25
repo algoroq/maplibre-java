@@ -64,33 +64,34 @@ public abstract class MapboxDirections extends
 
     @Override
     protected Call<DirectionsResponse> initializeCall() {
-        if (usePostMethod() == null) {
-            return callForUrlLength();
-        }
-
-        if (usePostMethod()) {
-            return post();
-        }
+//        if (usePostMethod() == null) {
+//            return callForUrlLength();
+//        }
+//
+//        if (usePostMethod()) {
+//            return post();
+//        }
 
         return get();
     }
 
     private Call<DirectionsResponse> callForUrlLength() {
         Call<DirectionsResponse> get = get();
-        if (get.request().url().toString().length() < MAX_URL_SIZE) {
-            return get;
-        }
-        return post();
+//        if (get.request().url().toString().length() < MAX_URL_SIZE) {
+        return get;
+//        }
+//        return post();
     }
 
     private Call<DirectionsResponse> get() {
         return getService().getCallV2(
                 FormatUtils.formatCoordinates(coordinates()),
-                geometries(),
-                overview(),
-                alternatives(),
+                profile(),
                 steps(),
-                profile()
+                alternatives(),
+                overview(),
+                geometries(),
+                language()
         );
 
 //    return getService().getCall(
@@ -125,38 +126,38 @@ public abstract class MapboxDirections extends
 //    );
     }
 
-    private Call<DirectionsResponse> post() {
-        return getService().postCall(
-                ApiCallHelper.getHeaderUserAgent(clientAppName()),
-//      user(),
-                profile(),
-                FormatUtils.formatCoordinates(coordinates()),
-//      accessToken(),
-                alternatives(),
-                geometries(),
-                overview(),
-                radius(),
-                steps(),
-                bearing(),
-                continueStraight(),
-                annotation(),
-                language(),
-                roundaboutExits(),
-                voiceInstructions(),
-                bannerInstructions(),
-                voiceUnits(),
-                exclude(),
-                approaches(),
-                waypointIndices(),
-                waypointNames(),
-                waypointTargets(),
-                enableRefresh(),
-                walkingSpeed(),
-                walkwayBias(),
-                alleyBias(),
-                snappingClosures()
-        );
-    }
+//    private Call<DirectionsResponse> post() {
+//        return getService().postCall(
+//                ApiCallHelper.getHeaderUserAgent(clientAppName()),
+////      user(),
+//                profile(),
+//                FormatUtils.formatCoordinates(coordinates()),
+////      accessToken(),
+//                alternatives(),
+//                geometries(),
+//                overview(),
+//                radius(),
+//                steps(),
+//                bearing(),
+//                continueStraight(),
+//                annotation(),
+//                language(),
+//                roundaboutExits(),
+//                voiceInstructions(),
+//                bannerInstructions(),
+//                voiceUnits(),
+//                exclude(),
+//                approaches(),
+//                waypointIndices(),
+//                waypointNames(),
+//                waypointTargets(),
+//                enableRefresh(),
+//                walkingSpeed(),
+//                walkwayBias(),
+//                alleyBias(),
+//                snappingClosures()
+//        );
+//    }
 
     @Override
     protected GsonBuilder getGsonBuilder() {
@@ -247,7 +248,7 @@ public abstract class MapboxDirections extends
 //  @NonNull
 //  abstract String accessToken();
 
-    @Nullable
+    @NonNull
     abstract Boolean alternatives();
 
     @Nullable
@@ -262,7 +263,7 @@ public abstract class MapboxDirections extends
     @Nullable
     abstract String bearing();
 
-    @Nullable
+    @NonNull
     abstract Boolean steps();
 
     @Nullable
@@ -271,7 +272,7 @@ public abstract class MapboxDirections extends
     @Nullable
     abstract String annotation();
 
-    @Nullable
+    @NonNull
     abstract String language();
 
     @Nullable
@@ -366,9 +367,11 @@ public abstract class MapboxDirections extends
     public static Builder builder() {
 
         return new AutoValue_MapboxDirections.Builder()
-//      .baseUrl(Constants.BASE_API_URL)
-                .profile(DirectionsCriteria.PROFILE_DRIVING)
-//      .user(DirectionsCriteria.PROFILE_DEFAULT_USER)
+      .baseUrl(Constants.BASE_API_URL)
+                .profile(DirectionsCriteria.PROFILE_WALKING)
+                .steps(true)
+                .overview(DirectionsCriteria.OVERVIEW_FULL).
+                alternatives(false)
                 .geometries(DirectionsCriteria.GEOMETRY_POLYLINE6);
     }
 
@@ -409,7 +412,6 @@ public abstract class MapboxDirections extends
         private List<String> waypointNames = new ArrayList<>();
         private List<Point> waypointTargets = new ArrayList<>();
         private List<Boolean> snappingClosures = new ArrayList<>();
-        private String baseUrl;
 
         /**
          * The username for the account that the directions engine runs on. In most cases, this should
@@ -463,7 +465,7 @@ public abstract class MapboxDirections extends
         /**
          * This can be used to set up to 23 additional in-between points which will act as pit-stops
          * along the users route. Note that if you are using the
-         * {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC} that the max number of waypoints allowed
+         *  that the max number of waypoints allowed
          * in the request is currently limited to 1.
          *
          * @param waypoint a {@link Point} which represents the pit-stop or waypoint where you'd like
@@ -479,7 +481,7 @@ public abstract class MapboxDirections extends
         /**
          * This can be used to set up to 23 additional in-between points which will act as pit-stops
          * along the users route. Note that if you are using the
-         * {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC} that the max number of waypoints allowed
+         *  that the max number of waypoints allowed
          * in the request is currently limited to 1.
          *
          * @param waypoints a list which represents the pit-stops or waypoints where
@@ -550,7 +552,7 @@ public abstract class MapboxDirections extends
          * Sets allowed direction of travel when departing intermediate waypoints. If true the route
          * will continue in the same direction of travel. If false the route may continue in the
          * opposite direction of travel. API defaults to true for
-         * {@link DirectionsCriteria#PROFILE_DRIVING} and false for
+         *  and false for
          * {@link DirectionsCriteria#PROFILE_WALKING} and {@link DirectionsCriteria#PROFILE_CYCLING}.
          *
          * @param continueStraight boolean true if you want to always continue straight, else false.
@@ -565,21 +567,13 @@ public abstract class MapboxDirections extends
          * select number of languages are currently supported, reference the table provided in the see
          * link below.
          *
-         * @param language a Locale value representing the language you'd like the instructions to be
-         *                 written in when returned
+         * @param language  language you'd like the instructions to be written in when returned
          * @return this builder for chaining options together
          * @see <a href="https://www.mapbox.com/api-documentation/navigation/#instructions-languages">Supported
          * Languages</a>
          * @since 2.2.0
          */
-        public Builder language(@Nullable Locale language) {
-            if (language != null) {
-                language(language.getLanguage());
-            }
-            return this;
-        }
-
-        abstract Builder language(@Nullable String language);
+        public abstract Builder language(String language);
 
         /**
          * Optionally, set this to true if you want to enable instructions while exiting roundabouts
@@ -829,25 +823,6 @@ public abstract class MapboxDirections extends
          * @since 2.1.0
          */
         public abstract Builder baseUrl(String baseUrl);
-
-        public Builder generateBaseUrl(@NonNull @ProfileCriteria String profile) {
-
-            switch (profile) {
-                case DirectionsCriteria.PROFILE_CYCLING:
-                    baseUrl = String.format("%s:5007/", Constants.BASE_API_URL);
-                    break;
-                case DirectionsCriteria.PROFILE_DRIVING:
-                    baseUrl = Constants.BASE_API_URL;
-                    break;
-                case DirectionsCriteria.PROFILE_WALKING:
-                    baseUrl = String.format("%s:5006/", Constants.BASE_API_URL);
-                    break;
-                default:
-                    baseUrl = Constants.BASE_API_URL;
-                    break;
-            }
-            return this;
-        }
 
         /**
          * Adds an optional interceptor to set in the OkHttp client.
@@ -1099,7 +1074,7 @@ public abstract class MapboxDirections extends
          * If provided, the number of snappingClosures must be the same as the number of
          * coordinates.
          * You can skip a coordinate and show its position in the list with null value.
-         * Must be used with {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
+         * Must be used with
          *
          * @param snappingClosures a list of booleans
          * @return this builder for chaining options together
@@ -1118,7 +1093,7 @@ public abstract class MapboxDirections extends
          * If provided, the number of snappingClosures must be the same as the number of
          * coordinates.
          * You can skip a coordinate with null value.
-         * Must be used with {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
+         * Must be used with
          *
          * @param snappingClosure a boolean affecting snapping of waypoint location to the road segment.
          * @return this builder for chaining options together
@@ -1258,16 +1233,8 @@ public abstract class MapboxDirections extends
             radius(FormatUtils.formatRadiuses(radiuses));
             waypointIndices(FormatUtils.join(";", waypointIndices, true));
 
-            if (baseUrl != null && !baseUrl.trim().equals("")) {
-                baseUrl(baseUrl);
-            }
 
             MapboxDirections directions = autoBuild();
-// TODO JV
-//      if (!MapboxUtils.isAccessTokenValid(directions.accessToken())) {
-//        throw new ServicesException("Using Mapbox Services requires setting a valid access"
-//          + " token.");
-//      }
             return directions;
         }
     }

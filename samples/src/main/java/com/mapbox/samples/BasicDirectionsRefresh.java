@@ -1,5 +1,6 @@
 package com.mapbox.samples;
 
+import com.mapbox.api.directions.v5.DirectionsCriteria;
 import com.mapbox.api.directions.v5.MapboxDirections;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directionsrefresh.v1.MapboxDirectionsRefresh;
@@ -19,7 +20,6 @@ import retrofit2.Response;
 import static com.mapbox.api.directions.v5.DirectionsCriteria.ANNOTATION_CONGESTION;
 import static com.mapbox.api.directions.v5.DirectionsCriteria.ANNOTATION_MAXSPEED;
 import static com.mapbox.api.directions.v5.DirectionsCriteria.OVERVIEW_FULL;
-import static com.mapbox.api.directions.v5.DirectionsCriteria.PROFILE_DRIVING_TRAFFIC;
 
 public class BasicDirectionsRefresh {
   public static void main(String[] args) throws IOException {
@@ -45,7 +45,7 @@ public class BasicDirectionsRefresh {
       .origin(Point.fromLngLat(-95.6332, 29.7890))
       .destination(Point.fromLngLat(-95.3591, 29.7576))
       .overview(OVERVIEW_FULL)
-      .profile(PROFILE_DRIVING_TRAFFIC)
+      .profile(DirectionsCriteria.PROFILE_WALKING)
       .annotations(Arrays.asList(ANNOTATION_CONGESTION,ANNOTATION_MAXSPEED));
 
     if (addWaypoint) {

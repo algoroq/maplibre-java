@@ -143,8 +143,8 @@ public abstract class MapboxOptimization
   public static Builder builder() {
     return new AutoValue_MapboxOptimization.Builder()
       .baseUrl(Constants.BASE_API_URL)
-      .profile(DirectionsCriteria.PROFILE_DRIVING)
-      .user(DirectionsCriteria.PROFILE_DEFAULT_USER)
+      .profile(DirectionsCriteria.PROFILE_WALKING)
+      .user("mapbox")
       .geometries(DirectionsCriteria.GEOMETRY_POLYLINE6);
   }
 
@@ -163,8 +163,7 @@ public abstract class MapboxOptimization
     private double[] radiuses;
 
     /**
-     * The username for the account that the directions engine runs on. In most cases, this should
-     * always remain the default value of {@link DirectionsCriteria#PROFILE_DEFAULT_USER}.
+     * The username for the account that the directions engine runs on
      *
      * @param user a non-null string which will replace the default user used in the directions
      *             request

@@ -15,7 +15,7 @@ import com.mapbox.api.directions.v5.DirectionsCriteria;
  * <a href="https://wiki.openstreetmap.org/wiki/Tag:barrier%3Dtoll_booth">
  *   payment booth or overhead electronic gantry</a>
  * where toll charge is collected.
- * Only available on the {@link DirectionsCriteria#PROFILE_DRIVING} profile.
+ * Only available on the  profile.
  */
 @AutoValue
 public abstract class TollCollection extends DirectionsJsonObject {

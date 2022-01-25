@@ -12,7 +12,7 @@ import com.mapbox.api.directions.v5.DirectionsCriteria;
 /**
  * An object containing detailed information about the road exiting the intersection along the
  * route.
- * Only available on the {@link DirectionsCriteria#PROFILE_DRIVING} profile.
+ * Only available on the { DirectionsCriteria#PROFILE_DRIVING} profile.
  */
 @AutoValue
 public abstract class MapboxStreetsV8 extends DirectionsJsonObject {

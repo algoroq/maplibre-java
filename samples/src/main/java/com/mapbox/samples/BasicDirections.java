@@ -106,12 +106,10 @@ public class BasicDirections {
         // 1. Pass in all the required information to get a route.
         MapboxDirections request = MapboxDirections.builder()
 //      .accessToken(BuildConfig.MAPBOX_ACCESS_TOKEN)
-                .origin(Point.fromLngLat(-95.6332, 29.7890))
-                .destination(Point.fromLngLat(-95.3591, 29.7576))
-                .generateBaseUrl(DirectionsCriteria.PROFILE_CYCLING)
+                .origin(Point.fromLngLat( 14.473587, 48.975371))
+                .destination(Point.fromLngLat(14.447415, 48.978904))
                 .profile(DirectionsCriteria.PROFILE_CYCLING)
-                .geometries(DirectionsCriteria.GEOMETRY_POLYLINE6)
-                .steps(true)
+                .language("de")
                 .build();
 
         // 2. Now request the route using a async call

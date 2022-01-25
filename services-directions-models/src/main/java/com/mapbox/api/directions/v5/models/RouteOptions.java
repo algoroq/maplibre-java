@@ -66,7 +66,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
 
   /**
    * The routing profile to use. Possible values are
-   * {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}, {@link DirectionsCriteria#PROFILE_DRIVING},
+   * { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}, { DirectionsCriteria#PROFILE_DRIVING},
    * {@link DirectionsCriteria#PROFILE_WALKING}, or {@link DirectionsCriteria#PROFILE_CYCLING}.
    * The same profile which was used during the request that resulted in this root directions
    * response. <tt>MapboxDirections.Builder</tt> ensures that a profile is always set even if the
@@ -82,7 +82,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
   /**
    * A list of Points to visit in order.
    * There can be between two and 25 coordinates for most requests, or up to three coordinates for
-   * {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC} requests.
+   * { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC} requests.
    * Note that these coordinates are different than the direction responses
    * {@link DirectionsWaypoint}s that these are the non-snapped coordinates.
    *
@@ -97,8 +97,8 @@ public abstract class RouteOptions extends DirectionsJsonObject {
    * Whether to try to return alternative routes (true) or not (false, default). An alternative
    * route is a route that is significantly different than the fastest route, but also still
    * reasonably fast. Such a route does not exist in all circumstances. Up to two alternatives may
-   * be returned. This is available for {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC},
-   * {@link DirectionsCriteria#PROFILE_DRIVING}, {@link DirectionsCriteria#PROFILE_CYCLING}.
+   * be returned. This is available for { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC},
+   * { DirectionsCriteria#PROFILE_DRIVING}, {@link DirectionsCriteria#PROFILE_CYCLING}.
    *
    * @return boolean object representing the setting for alternatives
    * @since 3.0.0
@@ -114,7 +114,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
    *   if english, this will most likely be empty
    * @since 3.0.0
    */
-  @Nullable
+  @NonNull
   public abstract String language();
 
   /**
@@ -178,7 +178,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
   /**
    * The allowed direction of travel when departing intermediate waypoints. If true, the route
    * will continue in the same direction of travel. If false, the route may continue in the opposite
-   * direction of travel. Defaults to true for {@link DirectionsCriteria#PROFILE_DRIVING} and false
+   * direction of travel. Defaults to true for { DirectionsCriteria#PROFILE_DRIVING} and false
    * for {@link DirectionsCriteria#PROFILE_WALKING} and {@link DirectionsCriteria#PROFILE_CYCLING}.
    *
    * @return a boolean value representing whether or not continueStraight was enabled or
@@ -231,7 +231,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
   /**
    * Whether to return steps and turn-by-turn instructions (true) or not (false, default).
    * If steps is set to true, the following guidance-related parameters will be available:
-   * {@link RouteOptions#bannerInstructions()}, {@link RouteOptions#language()},
+   * {@link RouteOptions#bannerInstructions()}, { RouteOptions#language()},
    * {@link RouteOptions#roundaboutExits()}, {@link RouteOptions#voiceInstructions()},
    * {@link RouteOptions#voiceUnits()}, {@link RouteOptions#waypointNamesList()},
    * {@link RouteOptions#waypointTargetsList()}, waypoints from {@link RouteOptions#coordinates()}
@@ -281,10 +281,10 @@ public abstract class RouteOptions extends DirectionsJsonObject {
    * Exclude certain road types from routing. The default is to not exclude anything from the
    * profile selected. The following exclude flags are available for each profile:
    *
-   * {@link DirectionsCriteria#PROFILE_DRIVING}: One of {@link DirectionsCriteria#EXCLUDE_TOLL},
+   * { DirectionsCriteria#PROFILE_DRIVING}: One of {@link DirectionsCriteria#EXCLUDE_TOLL},
    * {@link DirectionsCriteria#EXCLUDE_MOTORWAY}, or {@link DirectionsCriteria#EXCLUDE_FERRY}.
    *
-   * {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}: One of
+   * { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}: One of
    * {@link DirectionsCriteria#EXCLUDE_TOLL}, {@link DirectionsCriteria#EXCLUDE_MOTORWAY}, or
    * {@link DirectionsCriteria#EXCLUDE_FERRY}.
    *
@@ -500,7 +500,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
    * If false, they will not be considered for snapping.
    * If provided, the number of snappingClosures must be the same as the number of
    * coordinates.
-   * Must be used with {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
+   * Must be used with { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
    *
    * @return a String representing a list of booleans
    */
@@ -514,7 +514,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
    * If false, they will not be considered for snapping.
    * If provided, the number of snappingClosures must be the same as the number of
    * coordinates.
-   * Must be used with {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
+   * Must be used with { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
    *
    * @return a list of booleans
    */
@@ -591,8 +591,8 @@ public abstract class RouteOptions extends DirectionsJsonObject {
 
     /**
      * The routing profile to use. Possible values are
-     * {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC},
-     * {@link DirectionsCriteria#PROFILE_DRIVING}, {@link DirectionsCriteria#PROFILE_WALKING}, or
+     * { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC},
+     * { DirectionsCriteria#PROFILE_DRIVING}, {@link DirectionsCriteria#PROFILE_WALKING}, or
      * {@link DirectionsCriteria#PROFILE_CYCLING}.
      * The same profile which was used during the request that resulted in this root directions
      * response. <tt>MapboxDirections.Builder</tt> ensures that a profile is always set even if the
@@ -608,7 +608,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
     /**
      * A list of Points to visit in order.
      * There can be between two and 25 coordinates for most requests, or up to three coordinates for
-     * {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC} requests.
+     * { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC} requests.
      * Note that these coordinates are different than the direction responses
      * {@link DirectionsWaypoint}s that these are the non-snapped coordinates.
      *
@@ -623,8 +623,8 @@ public abstract class RouteOptions extends DirectionsJsonObject {
      * Whether to try to return alternative routes (true) or not (false, default). An alternative
      * route is a route that is significantly different than the fastest route, but also still
      * reasonably fast. Such a route does not exist in all circumstances. Up to two alternatives may
-     * be returned. This is available for{@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC},
-     * {@link DirectionsCriteria#PROFILE_DRIVING}, {@link DirectionsCriteria#PROFILE_CYCLING}.
+     * be returned. This is available for{ DirectionsCriteria#PROFILE_DRIVING_TRAFFIC},
+     * { DirectionsCriteria#PROFILE_DRIVING}, {@link DirectionsCriteria#PROFILE_CYCLING}.
      *
      * @param alternatives true if the request contained additional route request, otherwise false
      * @return this builder for chaining options together
@@ -714,7 +714,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
     /**
      * Sets the allowed direction of travel when departing intermediate waypoints. If true, the
      * route will continue in the same direction of travel. If false, the route may continue in the
-     * opposite direction of travel. Defaults to true for {@link DirectionsCriteria#PROFILE_DRIVING}
+     * opposite direction of travel. Defaults to true for { DirectionsCriteria#PROFILE_DRIVING}
      * and false for {@link DirectionsCriteria#PROFILE_WALKING} and
      * {@link DirectionsCriteria#PROFILE_CYCLING}.
      *
@@ -770,7 +770,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
     /**
      * Whether to return steps and turn-by-turn instructions (true) or not (false, default).
      * If steps is set to true, the following guidance-related parameters will be available:
-     * {@link RouteOptions#bannerInstructions()}, {@link RouteOptions#language()},
+     * {@link RouteOptions#bannerInstructions()}, {@link RouteOptions#language()} ()},
      * {@link RouteOptions#roundaboutExits()}, {@link RouteOptions#voiceInstructions()},
      * {@link RouteOptions#voiceUnits()}, {@link RouteOptions#waypointNamesList()},
      * {@link RouteOptions#waypointTargetsList()}, waypoints from {@link RouteOptions#coordinates()}
@@ -879,10 +879,10 @@ public abstract class RouteOptions extends DirectionsJsonObject {
      * Exclude certain road types from routing. The default is to not exclude anything from the
      * profile selected. The following exclude flags are available for each profile:
      *
-     * {@link DirectionsCriteria#PROFILE_DRIVING}: One of {@link DirectionsCriteria#EXCLUDE_TOLL},
+     * { DirectionsCriteria#PROFILE_DRIVING}: One of {@link DirectionsCriteria#EXCLUDE_TOLL},
      * {@link DirectionsCriteria#EXCLUDE_MOTORWAY}, or {@link DirectionsCriteria#EXCLUDE_FERRY}.
      *
-     * {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}: One of
+     * { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}: One of
      * {@link DirectionsCriteria#EXCLUDE_TOLL}, {@link DirectionsCriteria#EXCLUDE_MOTORWAY}, or
      * {@link DirectionsCriteria#EXCLUDE_FERRY}.
      *
@@ -1068,7 +1068,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
      * coordinates.
      * You can skip a coordinate and show its position in the list with the ; separator.
      * If unspecified, this parameter defaults to false.
-     * Must be used with {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
+     * Must be used with { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
      *
      * @param snappingClosures a semicolon-separated list of booleans
      * @return this builder for chaining options together
@@ -1083,7 +1083,7 @@ public abstract class RouteOptions extends DirectionsJsonObject {
      * coordinates.
      * You can skip a coordinate and show its position in the list with null value.
      * If unspecified, this parameter defaults to false.
-     * Must be used with {@link DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
+     * Must be used with { DirectionsCriteria#PROFILE_DRIVING_TRAFFIC}
      *
      * @param snappingClosures a list of booleans
      * @return this builder for chaining options together
